@@ -70,7 +70,7 @@ def get_shares_by_thunderstorms():
     print("------------------------------------------------------")
 
 def get_shares_by_time():
-    query = """SELECT tstamp, cnt AS most_new_shares FROM bikesharing ORDER BY cnt DESC LIMIT 1"""
+    query = """SELECT tstamp, cnt FROM bikesharing ORDER BY cnt DESC LIMIT 1"""
 
     with DatabaseContextManager("CRUD") as db:
         db.execute(query)
