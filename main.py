@@ -61,7 +61,7 @@ def get_shares_by_season():
 
 def get_shares_by_thunderstorms():
     query = """SELECT weather_code, SUM(cnt) 
-    AS shares FROM bikesharing WHERE weather_code >= 4 GROUP BY weather_code"""
+    AS shares FROM bikesharing WHERE weather_code >= 4"""
 
     with DatabaseContextManager("CRUD") as db:
         db.execute(query)
@@ -70,7 +70,7 @@ def get_shares_by_thunderstorms():
     print("------------------------------------------------------")
 
 def get_shares_by_time():
-    query = """SELECT tstamp, MAX(cnt) AS most_new_shares FROM `bikesharing`"""
+    query = """SELECT tstamp, cnt AS most_new_shares FROM bikesharing ORDER BY cnt DESC LIMIT 1"""
 
     with DatabaseContextManager("CRUD") as db:
         db.execute(query)
